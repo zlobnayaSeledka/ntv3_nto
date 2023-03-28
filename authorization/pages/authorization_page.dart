@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ntv3_cluster/authorization/pages/login_page.dart';
+import 'package:ntv3_cluster/verify/already_done_page.dart';
 
-import '../home_page/home_page.dart';
-import 'authorization_requests.dart';
-import 'login_page.dart';
+import '../../home_pages/home_page.dart';
+import '../authorization_requests.dart';
 
 class AuthorizationPage extends StatelessWidget {
   const AuthorizationPage({Key? key}) : super(key: key);
@@ -10,17 +11,19 @@ class AuthorizationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<dynamic>(
-      future: RequestsAuthorization.getUser(),
+      future: RequestsAuthorization.getUserData(),
       builder: (context, snapshot) {
         if (snapshot.hasData){
           if (snapshot.data){
             return HomePage();
           }
           else{
-            return LoginPage();
+            return const LoginPage();
           }
         }
-        return Container();
+        return Container(
+          color: Colors.red,
+        );
       }
     );
   }

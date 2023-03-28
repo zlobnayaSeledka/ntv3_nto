@@ -13,7 +13,7 @@ class CustomLinkText extends StatelessWidget {
       text,
       textAlign: TextAlign.center,
       style: TextStyle(
-        color: CustomAppTheme.mainColor,
+        color: CustomAppTheme.secondColor,
         fontSize: size,
         fontWeight: FontWeight.w600,
         fontFamily: CustomAppTheme.mainFont,
@@ -43,6 +43,26 @@ class CustomTitleText extends StatelessWidget {
   }
 }
 
+class CustomDescriptionTitleText extends StatelessWidget {
+  final String text;
+  final double? size;
+  const CustomDescriptionTitleText({Key? key, required this.text, this.size}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: TextStyle(
+        color: CustomAppTheme.descriptionTextColor,
+        fontSize: size,
+        fontWeight: FontWeight.bold,
+        fontFamily: CustomAppTheme.mainFontBold,
+        decoration: TextDecoration.none,
+      ),
+    );
+  }
+}
+
 class CustomDescriptionText extends StatelessWidget {
   final String text;
   final double? size;
@@ -55,8 +75,6 @@ class CustomDescriptionText extends StatelessWidget {
       style: TextStyle(
         color: CustomAppTheme.descriptionTextColor,
         fontSize: size,
-        fontWeight: FontWeight.bold,
-        fontFamily: CustomAppTheme.mainFontBold,
         decoration: TextDecoration.none
       ),
     );
@@ -72,7 +90,9 @@ class CustomMidleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      textAlign: TextAlign.center,
+      maxLines: 1,
+      softWrap: false,
+      overflow: TextOverflow.fade,
       style: TextStyle(
         color: CustomAppTheme.mainTextColor,
         fontSize: size,

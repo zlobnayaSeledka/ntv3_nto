@@ -13,7 +13,7 @@ class CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(horizontal:16.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -24,11 +24,14 @@ class CustomAppBar extends StatelessWidget {
               title == null && left != Container()?const SizedBox(width: 16):Container(),
               title != null?Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: CustomTitleText(text: title!, size: 25),
+                child: CustomTitleText(text: title!, size: 35),
               ):Container(),
             ]
           ),
-          right == null?Container():right!
+          right == null?Container():Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: right!,
+          )
         ],
       ),
     );

@@ -4,18 +4,20 @@ import '../custom_theme.dart';
 
 class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
-  final String? labelText;
+  final String? hintText;
   final bool? obscureText;
   final int? maxLines;
   final int? maxLength;
   final double? width;
+  final String? errorText;
   const CustomTextField({Key? key, 
     this.maxLength, 
     this.controller, 
-    this.labelText, 
+    this.hintText, 
     this.obscureText, 
     this.maxLines,
-    this.width
+    this.width,
+    this.errorText
   }) : super(key: key);
 
   @override
@@ -59,7 +61,15 @@ class CustomTextField extends StatelessWidget {
             color: CustomAppTheme.descriptionTextColor,
             fontFamily: CustomAppTheme.mainFont
           ),
-          hintText: labelText,
+          labelText: errorText,
+          //floatingLabelAlignment: FloatingLa,
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          labelStyle: TextStyle(
+            color: CustomAppTheme.errorColor,
+            fontFamily: 'GiloryLight',
+            fontWeight: FontWeight.normal
+          ),
+          hintText: hintText,
         ),
       ),
     );

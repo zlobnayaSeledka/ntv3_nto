@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 class CustomAppTheme{
-  static Color mainColor = const Color(0xff009b72); //Color(0xffbc264b); //Colors.black; // const Color(0xffb0d197);//Colors.limeAccent.shade400;
-  static Color secondColor = const Color(0xffa6d2ff); //Color(0xff9cb7d4);
+  static Color mainColor = Colors.limeAccent.shade400;
+  static Color secondColor = Color.fromARGB(255, 69, 60, 238); //const Color(0xffa6d2ff); //Color(0xff9cb7d4);
   static Color descriptionTextColor = Colors.grey.shade500;
   static Color mainTextColor = Colors.black;
   static Color backgroundColor = Colors.white;
@@ -12,7 +12,7 @@ class CustomAppTheme{
   static String mainFontLight = 'Gilory_Light';
 
   static BoxShadow mainShadow =
-    const BoxShadow(color: Color(0xfff0f0f0), spreadRadius: 4.0, blurRadius: 7.0);
+    const BoxShadow(color: Color.fromARGB(17, 12, 48, 255), spreadRadius: 4.0, blurRadius: 7.0);
 
   static double mainBorderRadius = 10.0;
 }

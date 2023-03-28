@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../design/widgets/buttons.dart';
-import '../design/widgets/text_field.dart';
-import '../design/widgets/texts.dart';
-import '../home_page/home_page.dart';
+import 'package:ntv3_cluster/authorization/authorization_requests.dart';
+import '../../design/widgets/buttons.dart';
+import '../../design/widgets/text_field.dart';
+import '../../design/widgets/texts.dart';
+import 'link_sent_page.dart';
 import 'login_page.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -12,6 +13,7 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController passwordController = TextEditingController();
     TextEditingController nameController = TextEditingController();
+    TextEditingController emailController = TextEditingController();
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -24,13 +26,19 @@ class RegisterPage extends StatelessWidget {
                 CustomTextField(
                   width: 400,
                   controller: nameController,
-                  labelText: 'Имя',
+                  hintText: 'Имя пользователя',
+                ),
+                const SizedBox(height: 16),
+                CustomTextField(
+                  width: 400,
+                  controller: emailController,
+                  hintText: 'email',
                 ),
                 const SizedBox(height: 16),
                 CustomTextField(
                   width: 400,
                   controller: passwordController,
-                  labelText: 'Пароль',
+                  hintText: 'Пароль',
                 ),
                 const SizedBox(height: 16),
                 GestureDetector(
@@ -46,14 +54,15 @@ class RegisterPage extends StatelessWidget {
                 CustomFilledButton(
                   width: 400,
                   text: 'Зарегистрироваться', 
-                  onTap: (){
-                    // RequestsAuthorization.registerRequest(
-                    //   nameController.text,
-                    //   passwordController.text
-                    // );
+                  onTap: ()async{
+                    await RequestsAuthorization.registerRequest(
+                      nameController.text,
+                      passwordController.text,
+                      emailController.text
+                    );
                     Navigator.pushAndRemoveUntil(
                       context, 
-                      MaterialPageRoute(builder: (context)=> HomePage()), (route) => false
+                      MaterialPageRoute(builder: (context)=> const LinkSentPage()), (route) => false
                     );
                   }
                 )
